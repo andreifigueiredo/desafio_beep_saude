@@ -1,7 +1,7 @@
 module CurrencyLayerHelper
   def self.get_current_rate
-    live_url = "#{ENV['LAYER_URL']}live?access_key=#{ENV['LAYER_KEY']}&currencies=BRL,EUR,ARS"
-    HTTParty.get(live_url)
+    live_url = "#{ENV['LAYER_URL']}live?#{ENV['LAYER_KEY']}&#{ENV['LAYER_CURRENCIES']}"
+    HTTParty.get(live_url, debug_output: $stdout)
   end
 
   def self.get_time_frame(start_date, end_date)
@@ -9,8 +9,8 @@ module CurrencyLayerHelper
     time_frame_response = {}
     time_frame_response[:quotes] = {}
     while day < end_date
-      time_frame_url = "#{ENV['LAYER_URL']}historical?access_key=#{ENV['LAYER_KEY']}&date=#{day.strftime("%Y-%m-%d")}&currencies=BRL,EUR,ARS"
-      day_response = HTTParty.get(time_frame_url)
+      time_frame_url = "#{ENV['LAYER_URL']}historical?#{ENV['LAYER_KEY']}&date=#{day.strftime("%Y-%m-%d")}&#{ENV['LAYER_CURRENCIES']}"
+      day_response = HTTParty.get(time_frame_url, debug_output: $stdout)
       # binding.pry
       if day_response['date'] == start_date.strftime("%Y-%m-%d")
         if day_response['success']
