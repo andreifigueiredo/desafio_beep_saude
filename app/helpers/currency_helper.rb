@@ -1,7 +1,7 @@
 module CurrencyHelper
   def self.get_currencies(days)
     currencies = Currency.get_last_days(days)
-    if currencies.length < days
+    if currencies.length < days*3
       days_missing = days - currencies.length
       self.create_currencies(days_missing)
       currencies = Currency.get_last_days(days) 

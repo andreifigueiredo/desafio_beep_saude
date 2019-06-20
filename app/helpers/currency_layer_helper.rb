@@ -1,14 +1,14 @@
 module CurrencyLayerHelper
-  def self.get_current_rate
+  def get_current_rate
     live_url = "#{ENV['LAYER_URL']}live?#{ENV['LAYER_KEY']}&#{ENV['LAYER_CURRENCIES']}"
     HTTParty.get(live_url, debug_output: $stdout)
   end
 
-  def self.get_time_frame(start_date, end_date)
+  def get_time_frame(start_date, end_date)
     day = start_date
     time_frame_response = {}
     time_frame_response[:quotes] = {}
-    while day < end_date
+    while day <= end_date
       time_frame_url = "#{ENV['LAYER_URL']}historical?#{ENV['LAYER_KEY']}&date=#{day.strftime("%Y-%m-%d")}&#{ENV['LAYER_CURRENCIES']}"
       day_response = HTTParty.get(time_frame_url, debug_output: $stdout)
       # binding.pry

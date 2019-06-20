@@ -10,6 +10,8 @@ class Currency < ApplicationRecord
   }
 
   validates_presence_of :value
-  validates_presence_of :date
   validates_presence_of :quote
+  validates_presence_of :date
+
+  validates_uniqueness_of :date, :scope => :quote
 end
