@@ -23,13 +23,13 @@
         padding: 15px 25px;
         border: 1px solid #ddd;
         border-bottom: 0;
-        background: $unactiveColor;
+        background: #eeeeee;
         color: #444;
         &:hover {
-          background: $unactiveHoverColor;
+          background: #dddddd;
         }
         &:active {
-          background: $activeColor;
+          background: #ffffff;
         }
       }
       &:not(:last-child) label {
@@ -64,7 +64,7 @@
       position: absolute;
       height: 2px;
       width: 100%;
-      background: $activeColor;
+      background: #ffffff;
       left: 0;
       bottom: -1px;
     }
