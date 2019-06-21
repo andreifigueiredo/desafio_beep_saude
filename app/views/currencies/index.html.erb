@@ -1,2 +1,30 @@
-<h1>Currencies#index</h1>
-<p>Find me in app/views/currencies/index.html.erb</p>
+
+<div class="pc-tab">
+<input checked="checked" id="tab1" type="radio" name="pct" />
+<input id="tab2" type="radio" name="pct" />
+<input id="tab3" type="radio" name="pct" />
+  <nav>
+    <ul>
+      <li class="tab1">
+        <label for="tab1">REAL</label>
+      </li>
+      <li class="tab2">
+        <label for="tab2">EURO</label>
+      </li>
+      <li class="tab3">
+        <label for="tab3">PESOS ARGENTINOS</label>
+      </li>
+    </ul>
+  </nav>
+  <section>
+    <div class="tab1 graph">
+      <%= raw @brl_line_graph.div %>
+    </div>
+    <div class="tab2 graph">
+      <%= raw @eur_line_graph.div %>
+    </div>
+    <div class="tab3 graph">
+      <%= raw @ars_line_graph.div %>
+    </div>
+  </section>
+</div>
