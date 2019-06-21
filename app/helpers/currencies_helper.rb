@@ -1,4 +1,4 @@
-module CurrencyHelper
+module CurrenciesHelper
   def self.get_currencies(days)
     currencies = Currency.get_last_days(days)
     if currencies.length < days*3

@@ -39,6 +39,7 @@ RSpec.describe CurrencyLayerHelper, type: :helper do
         expect(CurrencyLayerHelper.get_time_frame(Time.now-@days.days, Time.now)["quotes"].length).to eq(@days)
       end
     end
+    
     context "when fails" do
       before(:each) do
         allow(HTTParty).to receive(:get).with("#{ENV['LAYER_URL']}historical?#{ENV['LAYER_KEY']}&date=#{(Time.now-(@days-1).days).strftime("%Y-%m-%d")}&#{ENV['LAYER_CURRENCIES']}", any_args).and_return({
