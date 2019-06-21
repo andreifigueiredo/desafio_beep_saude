@@ -1,6 +1,6 @@
 class Currency < ApplicationRecord
   scope :get_last_days, -> (quantity_of_days) {
-    where(date: (Time.now-quantity_of_days.days)..Time.now)
+    where(date: (Time.now-quantity_of_days.days).beginning_of_day..Time.now.beginning_of_day)
   }
   
   enum quote: {

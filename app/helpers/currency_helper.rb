@@ -9,20 +9,19 @@ module CurrencyHelper
       return currencies
     end
   end
-
+  
   def self.create_currencies(days)
-    if days == 1
-      request_response = CurrencyLayerHelper.get_current_rate
-      request_response['quotes'].each do |key, value|
-        Currency.create(quote: key, value: value, date: Time.now.strftime("%Y-%m-%d"))
-      end
-    else 
+    if days > 1
       request_response = CurrencyLayerHelper.get_time_frame(Time.now-days.days, Time.now)
-      # binding.pry
       request_response['quotes'].each do |key, value|
         value.each do |hash_key, hash_value|
           Currency.create(quote: hash_key, value: hash_value, date: key.to_date)
         end
+      end
+    else 
+      request_response = CurrencyLayerHelper.get_current_rate
+      request_response['quotes'].each do |key, value|
+        Currency.create(quote: key, value: value, date: Time.now.strftime("%Y-%m-%d"))
       end
     end
   end
