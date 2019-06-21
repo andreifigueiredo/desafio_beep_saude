@@ -1,5 +1,3 @@
-/* Component Needs */
-
 .pc-tab > input,
 .pc-tab section > div {
   display: none;
@@ -9,12 +7,6 @@
 #tab2:checked ~ section .tab2,
 #tab3:checked ~ section .tab3 {
   display: block;
-}
-
-#tab1:checked ~ nav .tab1,
-#tab2:checked ~ nav .tab2,
-#tab3:checked ~ nav .tab3 {
-  color: red;
 }
 
 .pc-tab { 

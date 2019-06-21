@@ -29,6 +29,12 @@ body {
   background: #ecf0f1;
   font-family: 'Raleway';
 }
+
+h1 {
+  text-align: center;
+  font-weight: 100;
+  font-size: 60px;
+}
   
   @import "bootstrap";
   @import "bootstrap-sprockets";
