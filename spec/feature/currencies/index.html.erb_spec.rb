@@ -6,6 +6,6 @@ RSpec.describe "currencies/index.html.erb", type: :feature do
     find('#tab2').click
     find('#tab1').click
     find('#tab3').click
-    expect(page).to have_content 'PESOS ARGENTINOS'
+    expect(page).to have_content 'PESO ARGENTINO'
   end
 end

@@ -17,7 +17,7 @@ RSpec.configure do |config|
     # Mock historical
     today = Time.now+1.day
     past_day = Time.now-30.days
-    while past_day < today
+    while past_day.beginning_of_day < today.end_of_day
       allow(HTTParty).to receive(:get).with("#{ENV['LAYER_URL']}historical?#{ENV['LAYER_KEY']}&date=#{past_day.strftime("%Y-%m-%d")}&#{ENV['LAYER_CURRENCIES']}", any_args).and_return({
         "success": true,
         "terms": "https://currencylayer.com/terms",
