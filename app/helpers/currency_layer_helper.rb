@@ -8,10 +8,9 @@ module CurrencyLayerHelper
     day = start_date + 1.day 
     time_frame_response = {}
     time_frame_response[:quotes] = {}
-    while day.beginning_of_day < end_date.end_of_day
+    while day.beginning_of_day < end_date.end_of_day.end_of_day
       historical = "#{ENV['LAYER_URL']}historical?#{ENV['LAYER_KEY']}&date=#{day.strftime("%Y-%m-%d")}&#{ENV['LAYER_CURRENCIES']}"
       day_response = HTTParty.get(historical, debug_output: $stdout)
-      # binding.pry
       unless day_response['success']
         time_frame_response[:success] = day_response['success']
         time_frame_response[:error] = day_response['error']

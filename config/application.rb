@@ -17,5 +17,6 @@ module DesafioBeepSaude
     # the framework and any gems in your application.
 
     config.assets.initialize_on_precompile = false
+    
   end
 end
