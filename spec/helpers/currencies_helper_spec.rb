@@ -17,6 +17,7 @@ RSpec.describe CurrenciesHelper, type: :helper do
     end
 
     it "should create the desired " do
+      expect { CurrenciesHelper.get_currencies(@days) }.to change(Currency, :count).by(@days*3)
       expect(CurrenciesHelper.get_currencies(@days).length).to eq(@days*3)
     end
 

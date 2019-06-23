@@ -17,9 +17,9 @@ RSpec.describe Currency, type: :model do
       @days = 4
       time = Time.now
       past_time = Time.now - @days.days
-      while past_time < time
+      while past_time.beginning_of_day < time.end_of_day
         (0..2).each do |quote|
-          FactoryBot.create(:currency, date: past_time, quote: quote)
+          FactoryBot.create(:currency, date: past_time.utc.beginning_of_day, quote: quote)
         end
         past_time += 1.day
       end
